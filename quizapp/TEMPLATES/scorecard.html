@@ -1,0 +1,93 @@
+<!-- scorecard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App - Score Card</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #555;
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        #finalScore {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50; /* Green color for the score */
+        }
+
+        a {
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #3498db; /* Blue color for the link */
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #2980b9; /* Darker blue color on hover */
+        }
+    </style>
+</head>
+<!-- <body>
+    <h1>Congratulations! Quiz Complete!</h1>
+    
+    <p>Your final score is: <span id="finalScore">0</span></p>
+    <p>You have completed the quiz. Starting a new game!</p>
+    <a href="{% url 'add_question' %}">
+        <i class="uil uil-files-landscapes"></i>
+        <span class="link-name">Exit()</span>
+    </a>
+
+    <script>
+        // Retrieve the final score from sessionStorage and display it
+        const finalScoreElement = document.getElementById('finalScore');
+        const finalScore = parseInt(sessionStorage.getItem('currentScore')) || 0;
+        finalScoreElement.textContent = finalScore;
+    </script>
+</body> -->
+<body>
+    <h1>Congratulations, {{ username }}! Quiz Complete!</h1>
+    
+    <p>Your final score is: <span id="finalScore">{{ final_score }}</span></p>
+    <p>You have completed the quiz. Starting a new game!</p>
+    <button id="exitButton">Exit</button>
+
+    <script>
+        // Retrieve the final score from sessionStorage and display it
+        const finalScoreElement = document.getElementById('finalScore');
+        const finalScore = parseInt(sessionStorage.getItem('currentScore')) || 0;
+        finalScoreElement.textContent = finalScore;
+
+        // Event listener for the Exit button
+        document.getElementById('exitButton').addEventListener('click', function() {
+            // Include the final score in the exit URL
+            const exitUrl = "{% url 'user_page' %}?currentScore=" + finalScore;
+            
+            // Redirect to the desired exit URL with the currentScore parameter
+            window.location.href = exitUrl;
+        });
+    </script>
+</body>
+
+
+
+</html>

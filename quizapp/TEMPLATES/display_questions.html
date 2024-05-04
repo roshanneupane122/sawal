@@ -1,0 +1,332 @@
+<!-- display_questions.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background:linear-gradient( #0f0c29, #302b63, #24243e);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #quiz-container {
+            /* background-color: #0d1117b1;; */
+            background-color: #506aee;
+            padding: 30px;
+            border-radius: 50px;
+            /* box-shadow: 0 0 10px rgba(135, 197, 48, 0.9); */
+            text-align: center;
+            width: 50%; /* Adjust the width as needed */
+            margin-top: 20px;
+            height: 70%;
+            color: #ffff;
+            position: relative;
+            margin-top: -30px;
+            font-weight: bold;
+            box-shadow: 5px 20px 50px #000;
+        }
+
+        /* #question-box {
+            margin-bottom: 20px;
+            height: 70px;
+            font-size: 20px;
+            background-color: aqua;
+            color: #ffff;
+            position: relative;
+            border-radius: 20px;
+            width: 100%;
+            align-items: center;
+            padding: 5px;
+        } */
+        #question-box {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    background-color:#6e8ffc;
+    color: #ffff;
+    position: relative;
+    border-radius: 20px;
+    width: 100%;
+    padding: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+    
+}
+#outof{
+    
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    background-color:#506aee;;
+    color: #ffff;
+    position: relative;
+    border-radius: 20px;
+    width: 100%;
+    padding: 5px;
+    margin-top: -5px;
+}
+
+
+.option-box1 {
+    text-align: center; /* Center the text horizontally */
+    display: flex; /* Use flexbox for vertical centering */
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #8da5f5;
+    width: 220px;
+    min-height: 50px;
+    max-height: 100px; 
+    word-wrap: break-word;
+    position: absolute;
+    margin-top: 50px;
+    border-radius: 50px;
+    margin-left: 50px;
+    font-size: larger;
+    border: 4px solid rgb(11, 10, 10);
+    font-weight: 800;
+    color: #0f0f0f;
+}
+.option-box2 {
+    text-align: center; /* Center the text horizontally */
+    display: flex; /* Use flexbox for vertical centering */
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    background-color: #8da5f5;
+    width: 220px;
+    min-height: 50px;
+    max-height: 100px;
+    word-wrap: break-word;
+    position: absolute;
+    margin-left: 425px;
+    margin-top: 50px;
+    border-radius: 50px;
+    font-size: larger;
+    border: 4px solid rgb(11, 10, 10);
+    font-weight: 800;
+    color: #0f0f0f;
+}
+.option-box3 {
+    text-align: center; /* Center the text horizontally */
+    display: flex; /* Use flexbox for vertical centering */
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #8da5f5;
+    width: 220px;
+    min-height: 50px;
+    max-height: 100px;
+    word-wrap: break-word;
+    position: absolute;
+    margin-top: 160px;
+    border-radius: 50px;
+    margin-left: 50px;
+    font-size: larger;
+    border: 4px solid rgb(11, 10, 10);
+    font-weight: 800;
+    color: #0f0f0f;
+}
+.option-box4 {
+    text-align: center; /* Center the text horizontally */
+    display: flex; /* Use flexbox for vertical centering */
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #8da5f5;
+    width: 220px;
+    min-height: 50px;
+    max-height: 100px;
+    word-wrap: break-word;
+    position: absolute;
+    margin-top: 160px;
+    border-radius: 50px;
+    margin-left: 425px;
+    font-size: larger;
+    border: 4px solid rgb(11, 10, 10);
+    font-weight: 800;
+    color: #0f0f0f;
+}
+
+
+
+
+h1, h2 {
+            color: #0f0f0f;
+            text-align: center;
+        }
+
+        input[type="radio"] {
+    margin-right: 5px;
+    appearance: none; /* Remove default radio button appearance */
+    -webkit-appearance: none; /* For older versions of webkit browsers */
+    -moz-appearance: none; /* For older versions of Firefox */
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid #e2e9e2; /* Border color when not selected */
+    outline: none;
+    transition: background-color 0.3s;
+}
+input[type="radio"]:checked {
+    background-color: #eff7ef; /* Change background color when selected */
+    border-color: #e3e0ea; /* Change border color when selected */
+}
+
+        button {
+            background-color: #1c2135;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 220px;
+            margin-left: 210px;
+            position: absolute;
+        }
+
+        #timer {
+    font-size: 20px;
+    margin-top: -375px;
+    margin-left: 900px;
+    align-self: flex-start;
+     
+    color: #fb5252;/* Blinking animation without alternation */
+    position: absolute;
+    font-weight: bold;
+}
+
+    
+
+        #score {
+            font-size: 18px;
+            margin-top: -155px;
+            margin-bottom: 20px;
+            margin-left: 30px;
+            color: rgb(27, 219, 33);
+            position: absolute;
+            font-weight: bolder;
+            font-size: 25px;
+        }
+       
+    </style>
+</head>
+<body>
+    
+    <div id="quiz-container">
+        <div id="outof">
+        <!-- <h1>Question {{ current_question_index }} of {{ num_questions }}</h1> -->
+        </div>
+        <div id="question-box">
+            <h2>{{ current_question.question_text }}</h2>
+        </div>
+        <form method="post" action="{% url 'next_random_question' %}">
+            {% csrf_token %}
+            <div class="option-box1">
+                <input type="radio" name="option" value="{{ current_question.option1 }}" class="i1"> {{ current_question.option1 }}<br>
+            </div>
+            <div class="option-box2">
+                <input type="radio" name="option" value="{{ current_question.option2 }}"> {{ current_question.option2 }}<br>
+            </div>
+            <div class="option-box3">
+                <input type="radio" name="option" value="{{ current_question.option3 }}"> {{ current_question.option3 }}<br>
+            </div>
+            <div class="option-box4">
+                <input type="radio" name="option" value="{{ current_question.option4 }}"> {{ current_question.option4 }}<br>
+            </div>
+            <br>
+            <button type="submit">Next</button>
+        </form>
+        <div id="score">Score: 0</div>
+    </div>
+    <div id="timer">Time left:<span id="countdown"> 30</span></div>
+    <script>
+        // Timer countdown
+        let timeLeft = 60;
+        let countdownElement = document.getElementById('countdown');
+        let scoreElement = document.getElementById('score');
+        let form = document.querySelector('form');
+    
+        // Retrieve the current score from sessionStorage or set it to 0
+        let currentScore = parseInt(sessionStorage.getItem('currentScore')) || 0;
+    
+        function updateTimer() {
+            countdownElement.textContent = timeLeft;
+            if (timeLeft === 0) {
+                alert('Time is up!');
+                // You can add logic to handle the end of the quiz here
+            } else {
+                timeLeft--;
+                setTimeout(updateTimer, 1000);
+            }
+        }
+    
+        // Function to reset the form and timer
+        function resetQuiz() {
+            timeLeft = 60;
+            countdownElement.textContent = timeLeft;
+            form.reset();
+            scoreElement.textContent = 'Score: 0';
+            currentScore = 0;
+            // Clear the currentScore from sessionStorage when the quiz is complete
+            sessionStorage.clear();
+        }
+    
+        // Start the timer
+        updateTimer();
+    
+        // Example: Update the score on each submit (you may need to adjust this based on your scoring logic)
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the form from submitting, so you can handle the logic first
+    
+            // Get the selected option
+            const selectedOption = form.querySelector('input[name="option"]:checked');
+    
+            // Check if an option is selected
+            if (selectedOption) {
+                const selectedValue = selectedOption.value;
+    
+                // Compare the selected option with the correct answer
+                if (selectedValue === "{{ current_question.correct_option }}") {
+                    // Correct answer, update the score
+                    currentScore++;
+                    scoreElement.textContent = 'Score: ' + currentScore;
+                    // Store the currentScore in sessionStorage
+                    sessionStorage.setItem('currentScore', currentScore);
+                }
+    
+                // Move to the next question or complete the quiz
+                if (currentScore >= 25) {
+                    alert('Quiz complete! Starting a new game.');
+                    resetQuiz();
+                } else {
+                    // Submit the form to move to the next question
+                    form.submit();
+                }
+            } else {
+                alert('Please select an option before proceeding.'); // Inform the user if no option is selected
+            }
+        });
+    
+        // Initialize the score when the page loads
+        scoreElement.textContent = 'Score: ' + currentScore;
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    </script>
+    
+    
+</body>
+</html>

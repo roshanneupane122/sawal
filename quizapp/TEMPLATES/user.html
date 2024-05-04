@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+   
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div id="quiz-container">
+        <h1>Thanks for playing</h1>
+        <!-- <div id="timer">Time Left: <span id="time">60</span> seconds</div>
+        <div id="score">Score: <span id="score-value">0</span></div>
+        <div id="question-container" class="question"></div>
+        <ul id="options-container" class="options"></ul>
+        <button id="next-btn" onclick="checkAnswer()">Next Question</button>
+    </div> -->
+
+    <!-- <script >
+// Sample quiz data (replace it with your actual quiz data)
+const quizData = [
+    {
+        question: "What is the capital of France?",
+        options: ["Paris", "Berlin", "London", "Madrid"],
+        correctAnswer: "Paris"
+    },
+    {
+        question: "What is the largest mammal?",
+        options: ["Blue whale", "Elephant", "Lion", "Giraffe"],
+        correctAnswer: "Blue whale"
+    },
+    // Add more questions as needed
+];
+
+const quizContainer = document.getElementById("quiz-container");
+const questionContainer = document.getElementById("question-container");
+const optionsContainer = document.getElementById("options-container");
+const nextButton = document.getElementById("next-btn");
+const timeElement = document.getElementById("time");
+const scoreElement = document.getElementById("score-value");
+
+let currentQuestionIndex = 0;
+let score = 0;
+let timeRemaining = 60;
+
+function startQuiz() {
+    loadQuestion();
+    startTimer();
+}
+
+function loadQuestion() {
+    const currentQuestion = quizData[currentQuestionIndex];
+    questionContainer.textContent = currentQuestion.question;
+
+    optionsContainer.innerHTML = "";
+    currentQuestion.options.forEach((option, index) => {
+        const li = document.createElement("li");
+        li.textContent = option;
+        li.addEventListener("click", () => checkAnswer(index));
+        optionsContainer.appendChild(li);
+    });
+}
+
+function checkAnswer(selectedIndex) {
+    const currentQuestion = quizData[currentQuestionIndex];
+    if (currentQuestion.correctAnswer === currentQuestion.options[selectedIndex]) {
+        score++;
+    }
+
+    if (currentQuestionIndex < quizData.length - 1) {
+        currentQuestionIndex++;
+        loadQuestion();
+    } else {
+        endQuiz();
+    }
+}
+
+function startTimer() {
+    const timerInterval = setInterval(() => {
+        timeRemaining--;
+        timeElement.textContent = timeRemaining;
+
+        if (timeRemaining <= 0) {
+            clearInterval(timerInterval);
+            endQuiz();
+        }
+    }, 1000);
+}
+
+function endQuiz() {
+    quizContainer.innerHTML = `<h2>Quiz Completed</h2>
+                              <p>Your Score: ${score}/${quizData.length}</p>`;
+}
+
+// Start the quiz when the page loads
+startQuiz();
+
+
+    </script> -->
+</body>
+</html>
